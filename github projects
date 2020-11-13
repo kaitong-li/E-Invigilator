@@ -1,3 +1,4 @@
 https://github.com/DivyaPariti/Cheating-Detection 开启电脑摄像头
 https://github.com/ShivamSKD/Exam_Cheating_Detection  大量正负样本数据集图片，由于版本旧跑不出来
 https://github.com/jawadabbasi923/Automated-Cheating-Detection 人脸识别，开启电脑摄像头，框出人脸
+https://github.com/hanwen0529/Abnormal-Behavior-Detection-Based-On-Optical-Flow-Features  检测平缓人流中快速移动的物体（KNN,LogisticRegression,SVM）
