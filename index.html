@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>E-Invigilator</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+<link href="{{ url_for('static',filename='default.css')}}" rel="stylesheet" type="text/css" media="all" />
+<link href="{{ url_for('static',filename='fonts.css')}}" rel="stylesheet" type="text/css" media="all" />
+
+</head>
+
+<body>
+	<div id="header-wrapper">
+		<div id="banner" class="container">
+			<span>E-Invigilator<br />Your invigilate assistant</span>
+		</div>
+	</div>
+	<div id="wrapper">
+		<div id="staff" class="container">
+			<div class="title">
+				<h2>What's about E-Invigilator?</h2>
+				<span>The E-Invigilator system assists the invigilators by analyzing the video surveillance during the examination. When it detects cheating  "peeping" or "passing notes", it will locate the corresponding student and issue a warning to the invigilator. </span> </div>
+			<div class="boxA"><img src="{{url_for('static',filename='images/pic01.jpg')}}" width="266" height="400" alt="" /></div>
+			<div class="boxB"><img src="{{url_for('static',filename='images/pic02.jpg')}}" width="266" height="400" alt="" /></div>
+			<div class="boxC"><img src="{{url_for('static',filename='images/pic03.jpg')}}" width="266" height="400" alt="" /></div>
+		</div>
+		<div id="page" class="container">
+			<div class="boxA">
+				<h2>no cheating</h2>
+				<p>Answer the test papers in a normal body posture in the examination room.</p>
+			</div>
+			<div class="boxB">
+				<h2>passing notes</h2>
+				<p>Pass notes with paper answers to nearby students and exchange answers.</p>
+			</div>
+			<div class="boxC">
+				<h2>peeping</h2>
+				<p>Tilt body or look around to peek at the test papers of surrounding students.</p>
+			</div>
+		</div>
+	
+		<div id="staff" class="container">
+			<div class="title">
+				<p>Please upload your exam video. One video only for one time.</p>
+				<video src="" width="100%" id="video_window" controls="controls" ontimeupdate="progressUpdate()"></video>
+				<br><br>
+				<input class="form-control" type="file" onchange="getPath(this)" style="height:auto;" id="uploaded_video" name="uploaded_video"/>
+				<input type="submit" value="Confirm"/>
+				<br><br>
+	
+				<script>
+					function getPath(file) {
+				        if (window.FileReader) {
+				            for (var index=0, f; f = file.files[index]; index++) {
+				
+				                var filereader = new FileReader();
+				                filereader.onload = function (event) {
+				                    var srcpath = event.target.result;
+									showVideo(srcpath);
+				                    /*if (!validateVideo(srcpath)) {
+				                        console.log("H5"+msg);
+				                    } else {
+				                        showVideo(srcpath);
+				                    }*/
+				                };
+				                filereader.readAsDataURL(f);
+				            }
+				        } else {
+				            if (!/\.jpg$|\.png$|\.gif$/i.test(file.value)) {
+				                console.log("original "+msg);
+				            } else {
+				                showVideo(file.value);
+				            }
+				        }
+						return file.value;
+					}
+					
+					function showVideo(src) {
+						console.log(src);
+						var videoWindow = document.getElementById("video_window");
+						videoWindow.src = src;
+					}
+					
+					function validateVideo(data) {
+				        console.log(data);
+				        var pos = data.indexOf(",") + 1;
+				        for (var e in filter) {
+				            if (data.indexOf(filter[e]) === pos) {
+				                return e;
+				            }
+				        }
+				        return null;
+				    }
+
+				</script>
+	
+	
+							
+							
+		</div>
+			</div>
+	</div>
+</body>
+</html>
