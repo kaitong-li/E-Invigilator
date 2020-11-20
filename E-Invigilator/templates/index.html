@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>E-Invigilator</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+	<link href="{{ url_for('static',filename='default.css')}}" rel="stylesheet" type="text/css" media="all" />
+	<link href="{{ url_for('static',filename='fonts.css')}}" rel="stylesheet" type="text/css" media="all" />
+	<script src="{{ url_for('static',filename='js/jquery.min.js')}}"></script>
+</head>
+
+<style>
+p:first-letter{
+	text-transform:uppercase;
+}
+</style>
+
+<body>
+	<div id="header-wrapper">
+		<div id="banner" class="container">
+			<span style="font-size: 70px;">E-Invigilator</span>
+		</div>
+	</div>
+	<div id="wrapper">
+		<div id="staff" class="container">
+			<div class="container">
+				<h2 style="font-size: 2.8em; font-weight:400">ABOUT OUR SYSTEM</h2>
+				<br>
+				<p style="font-size: 18px">The E-Invigilator system assists the invigilators by analyzing the video surveillance during the examination. We defined two types of cheating behaviors including passing notes and peeping others. When these cheating behaviors are detected, this respective examinee will be located with a bounding box, so as to issue a warning to the invigilator. Detailed descriptions of the behaviors are shown below.</p> 
+				<br>
+			</div>
+			<div class="boxA">
+				<img src="{{url_for('static',filename='images/pic01.jpg')}}" width="266" height="400" alt="" />
+				<br><br>
+				<h2 style="font-weight: 400;">Not Cheating</h2>
+				<br>
+				<p>No cheating behaviors detected, with a normal body posture.</p>
+			</div>
+			<div class="boxB">
+				<img src="{{url_for('static',filename='images/pic02.jpg')}}" width="266" height="400" alt="" />
+				<br><br>
+				<h2 style="font-weight: 400;">Passing Notes</h2>
+				<br>
+				<p>Examinees pass notes with neighbor examinees to exchange answers.</p>
+			</div>
+			<div class="boxC">
+				<img src="{{url_for('static',filename='images/pic03.jpg')}}" width="266" height="400" alt="" />
+				<br><br>
+				<h2 style="font-weight: 400;">Peeping at Others</h2>
+				<br>
+				<p>As defined in this system, peeping behaviors include tilting body to peep at others' answer, whispering with others and leaving their seats.</p>
+			</div>
+			<div class="container">
+				<br>
+				<h2 style="font-size: 2.6em; font-weight:400">Please upload an examination surveillance video.</h2>
+				<br>
+				<video src="" width="100%" id="video_window" controls="controls"></video>
+				<br><br>
+				<form action="{{ url_for('cheatDetectionbyModel') }}" method="post" enctype="multipart/form-data">
+					<p>
+					    <input type="button" id="upload_btn" value="Upload" style="background-color: #555555; border:none; color:white; padding: 15px 32px; text-align:center; text-decoration:none;display:inline-block;font-size:16px;border-radius: 8px; cursor: pointer;"> 
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="submit" value="Confirm" style="background-color: #555555; border:none; color:white; padding: 15px 32px; text-align:center; text-decoration:none;display:inline-block;font-size:16px;border-radius: 8px; cursor: pointer;"/>
+						<br>
+						<input type="file" onchange="getPath(this)" style="height:auto;visibility: hidden;" id="uploaded_video" name="uploaded_video"/>
+					</p>
+					<script>
+						$('#upload_btn').click(function() {
+						    $('#uploaded_video').click();
+						});
+					</script>
+				</form>
+				<br><br>
+				
+			</div>
+			
+		</div>
+		<script>
+			function getPath(file) {
+		        if (window.FileReader) {
+		            for (var index=0, f; f = file.files[index]; index++) {
+		                var filereader = new FileReader();
+		                filereader.onload = function (event) {
+		                    var srcpath = event.target.result;
+							showVideo(srcpath);
+		                };
+		                filereader.readAsDataURL(f);
+		            }
+		        } else {
+		            if (!/\.jpg$|\.png$|\.gif$/i.test(file.value)) {
+		                console.log("original "+msg);
+		            } else {
+		                showVideo(file.value);
+		            }
+		        }
+				return file.value;
+			}
+			
+			function showVideo(src) {
+				console.log(src);
+				var videoWindow = document.getElementById("video_window");
+				videoWindow.src = src;
+			}
+		</script>
+	</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>E-Invigilator</title>
+	<meta http-equiv="pragma" content="no-cache"/>
+	<meta http-equiv="cache-control" content="no-cache"/>
+	<meta http-equiv="expires" content="0"/>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+	<link href="{{ url_for('static',filename='default.css')}}" rel="stylesheet" type="text/css" media="all" />
+	<link href="{{ url_for('static',filename='fonts.css')}}" rel="stylesheet" type="text/css" media="all" />
+	<script src="{{ url_for('static',filename='js/jquery.min.js')}}"></script>
+	<style>
+        .progress-div{
+            background: rgba(0, 0, 0, 0.03);
+            width: 1000px;
+            height: 140px;
+            padding: 60px 20px;
+            visibility: hidden;
+        }
+        .progress{
+            margin: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+	<div id="header-wrapper">
+		<div id="banner" class="container">
+			<span style="font-size: 70px;">E-Invigilator</span>
+		</div>
+	</div>
+	<div id="wrapper">
+		<div id="staff" class="container">
+			<div class="container">
+				<br>
+				<h2 style="font-size: 2.6em; font-weight:400">Cheat Detection Result</h2>
+				<br>
+				<video src="{{file_path}}" width="100%" id="video_window" controls="controls"></video>
+				<br><br><br><br>
+				<h2 style="font-size: 2.6em; font-weight:400">Result Analysis</h2>
+				<img src="{{peep_figure}}" style="width: 200; height: 150; " alt=" "><br>
+				<img src="{{passing_notes_figure}}" style="width: 200; height: 150;" alt=" ">
+			</div>
+		</div>	
+		<div style="text-align: center;">
+			<a href="/"><input type="button" name="back" value="Back" style="background-color: #555555; border:none; color:white; padding: 15px 32px; text-align:center; text-decoration:none;display:inline-block;font-size:16px;border-radius: 8px; cursor: pointer;"/></a>	
+			<br><br>
+		</div>
+	</div>
+
+</body>
+</html>
