@@ -220,7 +220,7 @@ def cheatDetectionbyModel():
     index = []
     name_list = []
     for cframe in range(total_frames):
-        if cframe < 500:
+        if total_frames < 500:
             if cframe % 32 == 0:
                 index.append(cframe)
                 name_list.append(str(cframe))
