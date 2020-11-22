@@ -3,4 +3,6 @@ This is a system where you can do the cheat detection based on an examination ro
 
 ## User Guide
 Open the Anaconda Prompt. Go to the directory where you store the main.py file.
+
 Run: python main.py
+
