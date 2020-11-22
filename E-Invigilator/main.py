@@ -219,25 +219,13 @@ def cheatDetectionbyModel():
     total_frames = len(frame_array)
     index = []
     name_list = []
-    for cframe in range(total_frames):
-        if total_frames < 500:
-            if cframe % 32 == 0:
-                index.append(cframe)
-                name_list.append(str(cframe))
-        else:
-            if cframe % 64 == 0:
-                index.append(cframe)
-                name_list.append(str(cframe))
+    index = range(total_frames)
     plt.cla()
     plt.xlabel('Frame')
     plt.ylabel('Frequency')
     plt.title('Frequency of Peeping Behaviors')
     y = peeps
-    first_bar = plt.bar(range(len(y)), y, color='blue')
-    plt.xticks(index, name_list)
-    for data in first_bar:
-        y = data.get_height()
-        x = data.get_x()
+    plt.plot(index,y,"g",linewidth=1) 
     peep_plot_path = "/static/figures/peeping.jpg?" + str(random.randint(0, 1000))
     plt.savefig("./static/figures/peeping.jpg")
     plt.close()
@@ -247,8 +235,7 @@ def cheatDetectionbyModel():
     plt.ylabel('Frequency')
     plt.title('Frequency of Passing Notes Behaviors') 
     y2 = passes 
-    first_bar = plt.bar(range(len(y2)), y2, color='red') 
-    plt.xticks(index, name_list) 
+    plt.plot(index,y2,"r",linewidth=1) 
     passing_notes_plot_path = "/static/figures/passing_notes.jpg?" + str(random.randint(0, 1000))
     plt.savefig("./static/figures/passing_notes.jpg")
     plt.close()
