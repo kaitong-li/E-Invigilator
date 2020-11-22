@@ -6,3 +6,7 @@ Open the Anaconda Prompt. Go to the directory where you store the main.py file.
 
 Run: python main.py
 
+When you see an address generated as shown below, copy the address and go to the browser.
+
+![]
+(https://github.com/kaitong-li/E-Invigilator/raw/master/Readme Images/generate_url.JPG)
