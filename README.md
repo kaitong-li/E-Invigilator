@@ -8,5 +8,5 @@ Run: python main.py
 
 When you see an address generated as shown below, copy the address and go to the browser.
 
-![]
+![image]
 (https://github.com/kaitong-li/E-Invigilator/raw/master/ReadmeImages/generate_url.JPG)
