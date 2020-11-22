@@ -17,3 +17,5 @@ When the video processing is done, the web page will switch to the result page.
 On the result page, please check the processed video and corresponding data analytics chart.
 
 For detail description, please refer to the project report.
+
+Project video can be download from: https://drive.google.com/file/d/1Wy_62AV8sbX_9N-VK0ABuXF5eJYOPfLn/view?usp=sharing
