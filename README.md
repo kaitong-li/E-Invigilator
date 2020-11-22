@@ -2,6 +2,8 @@
 This is a system where you can do the cheat detection based on an examination room surveillance video. Please refer to the user guide provided below to run the system.
 
 ## User Guide
+Please download the cheat_detection.hdf5 and yolov3.weights files from the google drive link and place them under the same directory as main.py.
+
 Open the Anaconda Prompt. Go to the directory where you store the main.py file.
 
 Run: python main.py
